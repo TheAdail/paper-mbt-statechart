@@ -1,0 +1,133 @@
+testclass MBT_StatechartTest for statechart TrafficLightCtrl {
+
+	// ECC-TC1: {Yes, Yes, Invalid (-1000ms)}, Initial: "main.off"
+	@Test
+	operation ecc_tc1_TurnOnBlinkYellow() {
+		enter
+		raise togglePower
+		raise toggleBlink
+		proceed -1s
+		assert active (main.operating.trafficlight.blinking.blinking.Yellow)
+	}
+
+	// ECC-TC2: {NO, No, Valid (8000ms)}, Initial: "normal.Red"
+	@Test
+	operation ecc_tc2_RedGreen() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		assert active (main.operating.trafficlight.normal.normal.Red)
+		// Actual test
+		proceed 8s
+		assert active (main.operating.trafficlight.normal.normal.Green)
+	}
+	
+	// PWC-TC1: {Yes, Yes, Valid (500ms)}, Initial: "main.off"
+	@Test
+	operation pwc_tc1_TurnOnBlinkBlack() {
+		enter
+		raise togglePower
+		raise toggleBlink
+		proceed 500ms
+		assert active (main.operating.trafficlight.blinking.blinking.Black)
+	}
+
+	// PWC-TC2: {Yes, No, Invalid (-1000ms)}, Initial: "main.off"
+	@Test
+	operation pwc_tc2_TurnOnRedGreen() {
+		enter
+		raise togglePower
+		proceed -1s
+		assert active (main.operating.trafficlight.normal.normal.Red)
+	}
+
+	// PWC-TC3: {No, Yes, Invalid (-1000ms)}, Initial: "normal.Red"
+	@Test
+	operation pwc_tc3_BlinkYellow() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		assert active (main.operating.trafficlight.normal.normal.Red)
+		// Actual test
+		raise toggleBlink
+		proceed -1ms
+		assert active (main.operating.trafficlight.blinking.blinking.Yellow)
+	}
+
+	// PWC-TC4: {No, No, Valid (3000ms)}, Initial: "normal.Yellow"
+	@Test
+	operation pwc_tc4_NoTransition() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		proceed 13s
+		assert active (main.operating.trafficlight.normal.normal.Yellow)
+		// Actual test
+		proceed 3s
+		assert active (main.operating.trafficlight.normal.normal.Red)
+	}
+
+	// DT-TC1: {Yes, No, Valid (8000ms)}, Initial: "main.off"
+	@Test
+	operation dt_tc1_TurnOnRedGreen() {
+		enter
+		raise togglePower
+		proceed 8s
+		assert active (main.operating.trafficlight.normal.normal.Green)
+	}
+
+	// DT-TC2: {Yes, No, Valid (13000ms)}, Initial: "normal.Red"
+	@Test
+	operation dt_tc2_TurnOff() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		assert active (main.operating.trafficlight.normal.normal.Red)
+		// Actual test
+		proceed 13s
+		raise togglePower
+		assert active (main.off)
+	}
+
+	// DT-TC3: {No, Yes, Valid (600ms)}, Initial: "blinking.Black"
+	@Test
+	operation dt_tc3_BlinkNormalRed() {
+		enter
+		// Just set the initial state to blinking.Black
+		raise togglePower
+		raise toggleBlink
+		proceed 500ms
+		assert active (main.operating.trafficlight.blinking.blinking.Black)
+		// Actual test
+		proceed 600ms
+		raise toggleBlink
+		assert active (main.operating.trafficlight.normal.normal.Red)
+	}
+
+	// DT-TC4: {No, Yes, Valid (500ms)}, Initial: "normal.Red"
+	@Test
+	operation dt_tc4_BlinkBlack() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		assert active (main.operating.trafficlight.normal.normal.Red)
+		// Actual test
+		raise toggleBlink
+		proceed 500ms
+		assert active (main.operating.trafficlight.blinking.blinking.Black)
+	}
+
+	// DT-TC5: {No, No, Invalid (-1000ms)}, Initial: "normal.Red"
+	@Test
+	operation dt_tc5_NoTransition() {
+		enter
+		// Just set the initial state to Red
+		raise togglePower
+		assert active (main.operating.trafficlight.normal.normal.Red)
+		// Actual test
+		proceed -1s
+		assert active (main.operating.trafficlight.normal.normal.Red)
+	}
+	
+	
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Traffic Light (Java)</title>
+<link href="./css/style.css" rel="stylesheet">
+
+</head>
+<body class="body-container">
+  <div class="primary">
+
+    <h1>Traffic Light (Java)</h1>
+
+    <p>
+    This example application demonstrates how to generate Java source code from a 
+    statechart and how to integrate the generated code in a simple GUI application.
+    </p>
+    <p>
+    The example shows the following features:
+    </p>
+    <ul>
+    <li>Statechart with history states, composite and orthogonal states</li>
+    <li>Java code generator model with timer service</li>
+    <li>Application that wires input and output events with a simple GUI</li>
+    </ul>
+
+    <p>
+      <img class= "large" alt="The statechart"
+        src="images/statechart.png" />
+    </p>
+
+    <h2>The State Machine</h2>
+
+	<p>
+	In summary, the traffic light can be in one of two different modes, a <em>normal</em>
+	mode and an <em>interrupt</em> mode which is enabled by the <code>police.interrupt</code> event.
+	The interrupt mode turns the yellow lights into a blinking mode.
+	In an orthogonal region a counter is decremented for visual feedback on the
+	duration of the traffic light's red and green phases. The duration of the corresponding
+	traffic light phases is specified by the variables <code>redPeriod</code>, <code>greenPeriod</code> and <code>yellowPeriod</code>.
+	</p>
+	
+	<h2>The Application</h2>
+	
+	<p>The traffic light example is based on Java and contains a small GUI
+      that demonstrate the state machine behaviour in
+      <code>/model/TrafficLightCtrl.sct</code>. This example combines generated Java code
+      with manual Java implementations (the GUI). To generate the state machine
+      code, right-click on <code>/model/TrafficLightCtrl.sgen</code> and select 'Generate
+      Code Artifacts'. To start the application run
+      <code>src/traffic/light/TrafficlightDemo.java</code>. For this, just right-click on the
+      project and select 'Run As > Java Application'.</p>
+	
+	 <p>
+      <img class= "tiny" alt="The GUI"
+        src="images/gui.png" />
+    </p>
+	
+	<p>
+	For interaction with the GUI, the traffic light controller raises outgoing events whenever a state is entered.
+	The application code in <code>TrafficlightDemo.java</code>
+	implements a corresponding listener to get notified whenever a state changes
+	in order to paint the graphics accordingly.
+	</p>
+	
+	<p>
+      <img class= "large" alt="Wiring of out-events in application code"
+        src="images/application-code.png" />
+    </p>
+    
+    <p>
+    The listener interface is not generated out of the box. It needs to be enabled in the generator model. The corresponding
+    property is <code>InterfaceObserverSupport</code> under <code>GeneralFeatures</code>.
+    </p>
+    
+    <p>
+      <img class= "small" alt="The generator model"
+        src="images/genmodel.png" />
+    </p>
+
+  </div>
+
+</body>
+</html>

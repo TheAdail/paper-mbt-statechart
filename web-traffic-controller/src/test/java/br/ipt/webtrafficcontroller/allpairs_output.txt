@@ -1,0 +1,21 @@
+TEST CASES
+case	togglePower	toggleBlink	time	pairings
+1	No	No	Valid	3
+2	No	Yes	Invalid	3
+3	Yes	No	Invalid	3
+4	Yes	Yes	Valid	3
+
+PAIRING DETAILS
+var1	var2	value1	value2	appearances	cases
+togglePower	toggleBlink	No	No	1	1
+togglePower	toggleBlink	No	Yes	1	2
+togglePower	toggleBlink	Yes	No	1	3
+togglePower	toggleBlink	Yes	Yes	1	4
+togglePower	time	No	Valid	1	1
+togglePower	time	No	Invalid	1	2
+togglePower	time	Yes	Valid	1	4
+togglePower	time	Yes	Invalid	1	3
+toggleBlink	time	No	Valid	1	1
+toggleBlink	time	No	Invalid	1	3
+toggleBlink	time	Yes	Valid	1	4
+toggleBlink	time	Yes	Invalid	1	2

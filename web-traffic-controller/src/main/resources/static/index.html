@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Traffic Controller</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <main class="content">
+        <div class="traffic-light-panel">
+            <div id="redLight" class="light off"></div>
+            <div id="yellowLight" class="light off"></div>
+            <div id="greenLight" class="light off"></div>
+        </div>
+
+        <div class="timer-panel">
+            <span id="timerDisplay" class="timer">OFF</span>
+        </div>
+
+        <div class="mode-panel">
+            <p>Mode: <span id="mode" class="mode-off">OFF</span></p>
+            <button onclick="togglePower()">Toggle Power</button>
+            <button onclick="toggleBlink()">Toggle Blink</button>
+        </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.6.1/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.9.0/axios.min.js"></script>
+    <script src="/main.js"></script>
+</body>
+</html>

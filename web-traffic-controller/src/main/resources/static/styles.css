@@ -1,0 +1,117 @@
+.content {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+/* Panel to hold the traffic lights */
+.traffic-light-panel {
+    width: 150px;
+    background-color: black;
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    margin: 20px auto;
+}
+
+/* Light styles */
+.light {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+}
+.light-red { background-color: red; }
+.light-yellow { background-color: yellow; }
+.light-green { background-color: #00f000; }
+.light-off { background-color: grey; }
+
+/* Timer Display */
+.timer-panel {
+    width: 100px;
+    background-color: #333;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    margin: 4px auto;
+}
+
+.timer {
+    font-size: 40px;
+    font-weight: bold;
+    color: #888;
+    transition: color 0.3s ease;
+}
+.timer-red { color: red; }
+.timer-green { color: #00f000; }
+.timer-off { color: #888; }
+
+/* Mode Panel Styling */
+.mode-panel {
+    width: auto;
+    min-width: 200px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin: 20px auto;
+}
+
+/* Mode Panel Text */
+.mode-panel p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin: 0;
+}
+
+/* Mode Span (Value) */
+.mode-panel span {
+    font-size: 20px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.mode-off { color: #888; }
+.mode-normal { color: green; }
+.mode-blinking { color: orange; }
+
+/* General button styles */
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 2px;
+}
+
+/* Hover effect for buttons */
+button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Active (pressed) effect for buttons */
+button:active {
+    background-color: #004494;
+    transform: translateY(1px);
+}
